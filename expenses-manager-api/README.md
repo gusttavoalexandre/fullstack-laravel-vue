@@ -1,8 +1,8 @@
 ### Processo de desenvolvimento API
-- [ ] Desenhar o diagrama do banco
+- [x] Desenhar o diagrama do banco
 - [ ] Configurar o projeto
-    - [ ] Docker sail
-    - [ ] Pest PHP 
+    - [x] Docker sail
+    - [ ] Pest PHP (Não instalado pois só está disponivel para versão 8.1)
     - [ ] Laravel Pint
     - [ ] Larastan
     - [ ] Configurar githooks com husky
