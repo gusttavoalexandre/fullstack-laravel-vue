@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
@@ -49,7 +50,7 @@
             "@php artisan migrate --graceful --ansi"
         ],
         "test-stan": "./vendor/bin/phpstan analyse",
-        "test-unit": "php artisan test",
+        "test-unit": "sail artisan test",
         "test-lint": "./vendor/bin/pint",
         "test": [
             "@test-lint",
