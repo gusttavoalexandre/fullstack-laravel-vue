@@ -3,8 +3,8 @@
 - [ ] Configurar o projeto
     - [x] Docker sail
     - [ ] Pest PHP (Não instalado pois só está disponivel para versão 8.1)
-    - [ ] Laravel Pint
-    - [ ] Larastan
+    - [x] Laravel Pint
+    - [x] Larastan
     - [ ] Configurar githooks com husky
 - [ ] Documentar endpoints no postman
 
