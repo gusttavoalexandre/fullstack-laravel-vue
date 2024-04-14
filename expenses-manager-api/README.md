@@ -1,11 +1,10 @@
 ### Processo de desenvolvimento API
 - [x] Desenhar o diagrama do banco
-- [ ] Configurar o projeto
+- [x] Configurar o projeto
     - [x] Docker sail
     - [ ] Pest PHP (Não instalado pois só está disponivel para versão 8.1)
     - [x] Laravel Pint
     - [x] Larastan
-    - [ ] Configurar githooks com husky
 - [ ] Documentar endpoints no postman
 
 - [ ] Autenticacão
@@ -13,6 +12,27 @@
 - [ ] Permissões
 - [ ] Notificacões
 
+### Diagrama do banco
+Validacões 
+
+1. Pint
+```shell
+./vendor/bin/pint
+```
+2. Larastan
+```shell
+./vendor/bin/phpstan analyse
+```
+3. Testes
+```shell
+php artisan test
+```
+
+OU
+
+```shell
+composer run test
+```
 
 ### Diagrama do banco
 ![Diagrama do banco](../images/database.png)
