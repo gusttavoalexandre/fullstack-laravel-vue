@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Expense\ExpenseStoreRequest;
 use App\Http\Requests\Expense\ExpenseUpdateRequest;
 use App\Http\Resources\ExpenseResource;
+use App\Jobs\SendExpenseNotificationJob;
 use App\Models\Expense;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -25,6 +26,9 @@ class ExpenseController
         $inputs = $request->validated();
 
         $expense = auth()->user()->expenses()->create($inputs);
+        $notification = $expense->notification()->create(['user_id' => auth()->id()]);
+
+        SendExpenseNotificationJob::dispatch($notification);
 
         return response()->json(new ExpenseResource($expense), Response::HTTP_CREATED);
     }
