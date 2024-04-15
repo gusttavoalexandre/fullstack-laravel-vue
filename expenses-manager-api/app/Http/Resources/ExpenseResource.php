@@ -8,6 +8,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @mixin Expense
+ *
+ * @property mixed $formatted_value
  */
 class ExpenseResource extends JsonResource
 {

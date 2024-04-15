@@ -26,6 +26,7 @@ class ExpenseController
         $inputs = $request->validated();
 
         $expense = auth()->user()->expenses()->create($inputs);
+
         $notification = $expense->notification()->create(['user_id' => auth()->id()]);
 
         SendExpenseNotificationJob::dispatch($notification);
