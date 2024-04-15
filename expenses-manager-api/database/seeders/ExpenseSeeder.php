@@ -13,13 +13,20 @@ class ExpenseSeeder extends Seeder
         User::all()->each(function (User $user) {
             Expense::factory(2)
                 ->create([
-                    'value' => 100.20,
+                    'value' => 100.21,
                     'user_id' => $user->id,
                 ]);
             Expense::factory(3)
                 ->create([
                     'user_id' => $user->id,
                 ]);
+        });
+
+        Expense::all()->each(function (Expense $expense) {
+            $expense->notification()->create([
+                'user_id' => $expense->user_id,
+                'notified_at' => now(),
+            ]);
         });
     }
 }
