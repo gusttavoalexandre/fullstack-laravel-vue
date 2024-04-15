@@ -20,7 +20,7 @@ class Expense extends Model
 
     protected $casts = [
         'date' => 'date',
-        'value' => MoneyCast::class
+        'value' => MoneyCast::class,
     ];
 
     public function user()
@@ -36,7 +36,7 @@ class Expense extends Model
     protected function formattedValue(): Attribute
     {
         return new Attribute(
-            get: fn() => 'R$ ' . str_replace('.', ',', (float)$this->value),
+            get: fn () => 'R$ '.str_replace('.', ',', (float) $this->value),
         );
     }
 }

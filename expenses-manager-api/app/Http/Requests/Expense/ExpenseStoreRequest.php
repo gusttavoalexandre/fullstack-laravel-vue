@@ -33,12 +33,13 @@ class ExpenseStoreRequest extends FormRequest
                     try {
                         $date = Carbon::parse($value);
                     } catch (InvalidFormatException $e) {
-                        $fail('The ' . $attribute . ' invalid date format.');
+                        $fail('The '.$attribute.' invalid date format.');
+
                         return;
                     }
 
                     if ($date->greaterThan(Carbon::today()->endOfDay())) {
-                        $fail('The ' . $attribute . ' cannot be in the future.');
+                        $fail('The '.$attribute.' cannot be in the future.');
                     }
                 },
             ],

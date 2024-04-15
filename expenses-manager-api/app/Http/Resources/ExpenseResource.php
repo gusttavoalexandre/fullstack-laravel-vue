@@ -7,7 +7,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ExpenseResource extends JsonResource
 {
-
     /**
      * Transform the resource into an array.
      *

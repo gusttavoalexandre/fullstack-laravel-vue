@@ -33,7 +33,7 @@ class LoginTest extends TestCase
 
         $this->postJson(route('auth.login'), [
             'email' => $user->email,
-            'password' => $password . '123',
+            'password' => $password.'123',
         ])->assertStatus(401)->assertJson(['message' => 'Email ou senha inválidos']);
     }
 

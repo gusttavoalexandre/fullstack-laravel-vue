@@ -35,7 +35,7 @@ class SendExpenseNotificationJob implements ShouldQueue
             );
             $this->notification->update(['sent_at' => now()]);
         } catch (Exception $e) {
-            Log::error("Send e-mail notifcation {$this->notification->id} error: " . $e->getMessage());
+            Log::error("Send e-mail notifcation {$this->notification->id} error: ".$e->getMessage());
         }
     }
 }
