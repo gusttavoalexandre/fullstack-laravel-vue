@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed $user
+ * @property mixed $expense
+ */
 class ExpenseNotification extends Model
 {
-    use HasFactory;
     use HasFactory;
 
     protected $fillable = [

@@ -36,7 +36,7 @@ class Expense extends Model
     protected function formattedValue(): Attribute
     {
         return new Attribute(
-            get: fn () => 'R$ '.str_replace('.', ',', (float) $this->value),
+            get: fn () => 'R$ '.number_format((float) $this->value, 2, ',', '.'),
         );
     }
 }

@@ -2,9 +2,15 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin Expense
+ *
+ * @property mixed $formatted_value
+ */
 class ExpenseResource extends JsonResource
 {
     /**
