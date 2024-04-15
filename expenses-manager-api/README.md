@@ -1,38 +1,80 @@
+### Documentacão da API
+
+- [Postman](https://www.postman.com/research-geologist-98703909/workspace/apis/collection/34267895-8a809235-0ce2-460f-a53b-e16e53935b51?action=share&creator=34267895)
+- Diagrama do banco:
+  ![Diagrama do banco](../images/database.png)
+
+## Requisitos
+
+- PHP 8.2
+- Composer 2.*
+- Docker e Docker Compose
+- Laravel Sail
+
+## Pacotes
+
+- Laravel - Docker com os servicos
+- Sanctum - API Auth
+- PHPUnit - Testes
+- Laravel Pint - Formato de código
+- Larastan - Analise estática
+
+## Commands
+
+```shell
+composer test
+```
+
+## Docker
+
+- Mysql -> Banco de dados SQL
+- Redis -> Fila
+- Mailpit -> Envio de e-mails
+
+## Inicie
+
+- Clone o projeto
+- Copie o .env.example para .env
+- Instale os pacotes:
+
+```
+    composer install && npm install
+```
+
+- Execute o Docker:
+
+```
+    sail up
+```
+
+O app será executado em: [http://localhost:80](http://localhost:80)
+
+- Execute as migrations e seeders:
+
+```
+    sail artisan migrate:fresh --seed
+```
+
+- Um usuário de teste será criado com o seguinte acesso
+
+```
+    'email' => 'dev@test.com',
+    'password' => '123123123'
+```
+
 ### Processo de desenvolvimento API
+
 - [x] Desenhar o diagrama do banco
 - [x] Configurar o projeto
     - [x] Docker sail
-    - [ ] Pest PHP (Não instalado pois só está disponivel para versão 8.1)
+    - [ ] Pest PHP (Só está disponivel para versão 8.1)
+    - [x] PHPUnit
     - [x] Laravel Pint
     - [x] Larastan
-- [ ] Documentar endpoints no postman
+- [x] Documentar endpoints no postman
+- [x] Autenticacão e Testes
+- [x] Despesas e Testes
+- [x] Permissões
+- [x] Notificacões
 
-- [ ] Autenticacão
-- [ ] Despesas
-- [ ] Permissões
-- [ ] Notificacões
 
-### Diagrama do banco
-Validacões 
-
-1. Pint
-```shell
-./vendor/bin/pint
-```
-2. Larastan
-```shell
-./vendor/bin/phpstan analyse
-```
-3. Testes
-```shell
-php artisan test
-```
-
-OU
-
-```shell
-composer run test
-```
-
-### Diagrama do banco
-![Diagrama do banco](../images/database.png)
