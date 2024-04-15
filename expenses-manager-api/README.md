@@ -19,12 +19,6 @@
 - Laravel Pint - Formato de código
 - Larastan - Analise estática
 
-## Commands
-
-```shell
-composer test
-```
-
 ## Docker
 
 - Mysql -> Banco de dados SQL
@@ -60,6 +54,14 @@ O app será executado em: [http://localhost:80](http://localhost:80)
 ```
     'email' => 'dev@test.com',
     'password' => '123123123'
+```
+
+## Testes
+
+Executa o laravel `Pint`, `Larastan` e `PHPUnit`
+
+```shell
+composer test
 ```
 
 ### Processo de desenvolvimento API
