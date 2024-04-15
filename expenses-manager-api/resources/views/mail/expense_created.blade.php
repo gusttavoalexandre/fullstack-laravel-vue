@@ -1,3 +1,3 @@
 <div>
-    <p>A new expense was recorded in the amount of: {{ $expense->formatted_value }}</p>
+    <p>Foi registada uma nova despesa no valor de: {{ $expense->formatted_value }}</p>
 </div>

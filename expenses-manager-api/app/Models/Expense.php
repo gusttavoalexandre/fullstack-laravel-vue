@@ -23,6 +23,8 @@ class Expense extends Model
         'value' => MoneyCast::class,
     ];
 
+    private mixed $formatted_value;
+
     public function user()
     {
         return $this->belongsTo(User::class);

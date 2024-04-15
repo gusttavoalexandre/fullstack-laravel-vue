@@ -28,7 +28,7 @@ class ExpenseCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'A new expense has been recorded',
+            subject: 'Despesa cadastrada',
         );
     }
 
