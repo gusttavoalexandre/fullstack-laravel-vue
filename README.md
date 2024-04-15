@@ -1,5 +1,10 @@
 # Fullstack Challenge - Onfly 20231205
 
+
+## Documentacões
+- [BACKEND](./expenses-manager-api/README.md)
+- [FRONTENT](./expenses-manager-front/README.md)
+
 ## Introdução
 
 Este é o nosso case técnico! A ideia é que você possa mostrar toda sua expertise técnica através dele!

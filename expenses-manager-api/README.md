@@ -25,7 +25,7 @@
 - Redis -> Fila
 - Mailpit -> Envio de e-mails
 
-## Inicie
+## Executando o App
 
 - Clone o projeto
 - Copie o .env.example para .env
