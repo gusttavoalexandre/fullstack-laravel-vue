@@ -18,7 +18,6 @@ class MeTest extends TestCase
         Sanctum::actingAs($user);
 
         $response = $this->getJson(route('auth.me'))->assertStatus(200);
-        //TODO Fazer bind disso no phpunit (new UserResource($user))->toArray(request())
         $this->assertEquals((new UserResource($user))->toArray(request()), $response->json());
     }
 
