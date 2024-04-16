@@ -32,7 +32,11 @@
 - Instale os pacotes:
 
 ```
-    composer install && npm install
+    composer install
+```
+- Gere a chave do app
+```
+    php artisan key:generate
 ```
 
 - Execute o Docker:
