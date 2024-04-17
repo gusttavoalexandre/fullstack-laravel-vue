@@ -5,7 +5,7 @@
       :key="item?.label"
       v-bind="item"
       class="my-card text-white"
-      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+      style="background: #35a2ff"
     >
       <q-card-section>
         <div class="text-h6">{{ item.label }}</div>
