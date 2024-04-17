@@ -79,7 +79,7 @@ const goToCreate = () => {
   router.push('/expenses/create');
 }
 const goToEdit = (id: number) => {
-  router.push('/expenses/edit/' + id);
+  router.push({ name: 'expenses/edit', params: { id } });
 }
 const deleteItem = async (id: number) => {
   await destroy(id)

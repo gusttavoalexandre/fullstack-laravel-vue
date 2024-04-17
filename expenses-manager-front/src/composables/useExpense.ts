@@ -8,8 +8,7 @@ type Expense = {
   value: number
   description: string
   formatted_value: string
-  date: string
-  default_date_format: string
+  formatted_date: string
 }
 
 type ExpenseParams = {
@@ -42,7 +41,7 @@ const useExpense = () => {
     }
   }
 
-  const show = async (id: number): Promise<Expense | undefined> => {
+  const show = async (id: any): Promise<Expense | undefined> => {
     try {
       const response = await api.get(`/expenses/${id}`)
       return response.data.data
@@ -67,10 +66,10 @@ const useExpense = () => {
     }
   }
 
-  const update = async (id: number, params: ExpenseParams) => {
+  const update = async (id: any, params: ExpenseParams) => {
     try {
       const response = await api.put(`/expenses/${id}`, params)
-      router.push({ name: 'expense.index' })
+      router.push('/expenses')
     } catch (e: any) {
       if (e.response?.status === 422) {
         errors.value = dataFormat.formatErrors(e.response.data.errors)
