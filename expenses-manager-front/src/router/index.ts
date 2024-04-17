@@ -6,6 +6,7 @@ import LayoutMain from '../layouts/Main.vue';
 import Home from '../pages/Home.vue';
 import Login from '../pages/auth/Login.vue';
 import ExpenseIndex from '../pages/expense/index.vue';
+import ExpenseCreate from '../pages/expense/create.vue';
 import Register from '../pages/auth/Register.vue';
 import ErrorNotFound from '../pages/ErrorNotFound.vue';
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/expenses',
     component: LayoutMain,
     children: [{ path: '', name: 'expenses', component: ExpenseIndex }],
+  },
+  {
+    path: '/expenses/create',
+    component: LayoutMain,
+    children: [{ path: '', name: 'expenses/create', component: ExpenseCreate }],
   },
   {
     path: '/logout',

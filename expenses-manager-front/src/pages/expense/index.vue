@@ -32,10 +32,14 @@
 defineOptions({
   name: 'ExpenseIndex'
 });
+import { useRouter } from 'vue-router';
+
 import useExpense from '../../composables/useExpense'
-const { index, expenses } = useExpense()
+const { index, destroy, expenses } = useExpense()
 import { onMounted } from 'vue'
 import { QTableColumn } from 'quasar'
+
+const router = useRouter();
 
 const columns: QTableColumn[] = [
   {
@@ -72,13 +76,14 @@ const columns: QTableColumn[] = [
   },
 ]
 const goToCreate = () => {
-  // $router.push('/expense/create')
+  router.push('/expenses/create');
 }
 const goToEdit = (id: number) => {
-  // $router.push('/expense/create')
+  router.push('/expenses/edit/' + id);
 }
-const deleteItem = (id: number) => {
-  // $router.push('/expense/create')
+const deleteItem = async (id: number) => {
+  await destroy(id)
+  await index()
 }
 
 onMounted(async () => {

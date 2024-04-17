@@ -18,8 +18,18 @@ type ExpenseParams = {
   date: string
 }
 
+type Errors = {
+  value: string
+  description: string
+  date: string
+}
+
 const useExpense = () => {
-  const errors = ref({})
+  const errors = ref<Errors>({
+    value: '',
+    description: '',
+    date: ''
+  })
   const router = useRouter()
   const expenses: Ref<Array<Expense>> = ref([])
 
@@ -28,7 +38,7 @@ const useExpense = () => {
       const response = await api.get('/expenses')
       expenses.value = response.data.data
     } catch (e: any) {
-      console.log('Internal error', e)
+      router.push('/unauthorized')
     }
   }
 
@@ -38,18 +48,18 @@ const useExpense = () => {
       return response.data.data
     } catch (e: any) {
       if (e.response?.status === 403) {
-        router.push({ name: 'not_found' })
+        router.push('/unauthorized')
       }
     }
   }
 
   const store = async (params: ExpenseParams) => {
-    errors.value = {}
+    resetErrors()
 
     try {
       await api.post('/expenses', params)
 
-      router.push({ name: 'expense.index' })
+      router.push('/expenses')
     } catch (e: any) {
       if (e.response?.status === 422) {
         errors.value = dataFormat.formatErrors(e.response.data.errors)
@@ -66,29 +76,28 @@ const useExpense = () => {
         errors.value = dataFormat.formatErrors(e.response.data.errors)
       }
       if (e.response?.status === 403) {
-        router.push({ name: 'not_found' })
+        router.push('/unauthorized')
       }
     }
   }
 
-  const destroy = async (expense: any) => {
-    errors.value = {}
+  const destroy = async (id: any) => {
+    resetErrors()
 
     try {
-      await api.delete(`/expenses/${expense.id}`)
+      await api.delete(`/expenses/${id}`)
     } catch (e: any) {
       if (e.response?.status === 403) {
-        router.push({ name: 'not_found' })
+        router.push('/unauthorized')
       }
     }
   }
 
-  const status = async () => {
-    try {
-      const response = await api.get('/status/expense')
-      return response.data
-    } catch (e: any) {
-      console.log('Internal error', e)
+  const resetErrors = () => {
+    errors.value = {
+      value: '',
+      description: '',
+      date: ''
     }
   }
 
@@ -99,7 +108,6 @@ const useExpense = () => {
     destroy,
     show,
     update,
-    status,
     expenses
   }
 }
