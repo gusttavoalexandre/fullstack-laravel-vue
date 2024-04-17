@@ -13,18 +13,20 @@
       </div>
 
         <q-form @submit.prevent="onSubmit" class="q-gutter-md">
+          <q-input filled v-model="form.name" type="text" label="Nome" :error="errors.name?.length > 0" :error-message="errors.name"/>
           <q-input filled v-model="form.email" type="email" label="E-mail" :error="errors.email?.length > 0" :error-message="errors.email"/>
           <q-input filled v-model="form.password" type="password" label="Senha" :error="errors.password?.length > 0" :error-message="errors.password"/>
+          <q-input filled v-model="form.password_confirmation" type="password" label="Confirmar senha" :error="errors.password_confirmation?.length > 0" :error-message="errors.password_confirmation"/>
           <div>
             <q-btn label="Entrar" type="submit" color="primary" class="full-width" />
           </div>
         </q-form>
         <div class="q-mt-md">
-          <span>Não possui uma conta ?
+          <span>Já possui uma conta ?
             <router-link
           clickable
-          to="/register"
-          > Registre-se agora</router-link>
+          to="/login"
+          > Entrar agora</router-link>
           </span>
         </div>
       </q-card-section>
@@ -37,15 +39,17 @@ import useAuth from '../../composables/useAuth'
 defineOptions({
   name: 'LoginPage'
 });
-const { login, errors } = useAuth()
+const { register, errors } = useAuth()
 import { reactive } from 'vue'
 
 const form = reactive({
+  name: '',
   email: '',
-  password: ''
+  password: '',
+  password_confirmation: ''
 })
 
 const onSubmit = async () => {
-   await login(form)
+   await register(form)
 };
 </script>

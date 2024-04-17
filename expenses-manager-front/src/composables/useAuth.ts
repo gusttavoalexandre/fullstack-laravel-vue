@@ -12,9 +12,11 @@ type Login = {
 }
 
 type Errors = {
+  name: string
   email: string
   password: string
-  general: string
+  general: string,
+  password_confirmation: string
 }
 
 type Register = {
@@ -26,9 +28,11 @@ type Register = {
 
 const useAuth = () => {
   const errors = ref<Errors>({
+    name: '',
     email: '',
     password: '',
-    general: ''
+    general: '',
+    password_confirmation: ''
   })
   const router = useRouter()
   const store = useUserStore()
@@ -79,9 +83,11 @@ const useAuth = () => {
 
   const resetErrors = () => {
     errors.value = {
+      name: '',
       email: '',
       password: '',
-      general: ''
+      general: '',
+      password_confirmation: ''
     }
   }
 

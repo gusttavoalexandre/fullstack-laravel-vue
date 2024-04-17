@@ -5,6 +5,7 @@ import LayoutMain from '../layouts/Main.vue';
 
 import Home from '../pages/Home.vue';
 import Login from '../pages/auth/Login.vue';
+import Register from '../pages/auth/Register.vue';
 import ErrorNotFound from '../pages/ErrorNotFound.vue';
 
 const routes = [
@@ -29,6 +30,12 @@ const routes = [
     component: LayoutGuest,
     beforeEnter: Guard.redirectIfAuthenticated,
     children: [{ path: '', name: 'login', component: Login }],
+  },
+  {
+    path: '/register',
+    component: LayoutGuest,
+    beforeEnter: Guard.redirectIfAuthenticated,
+    children: [{ path: '', name: 'register', component: Register }],
   },
   {
     path: '/:catchAll(.*)*',
