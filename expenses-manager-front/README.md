@@ -1,41 +1,24 @@
-# Expenses Manager Front (expenses-manager-front)
+## Iniciar
 
-A Quasar Project
+- No arquivo src/boot/axios contem a URL da API backend, deve ser definida com a url da API
+```js
+axios.defaults.baseURL = 'http://localhost:80/api'
 
-## Install the dependencies
-```bash
-yarn
-# or
+```
+### Instalando pacotes
+
+```sh
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
+### Executando projeto
+
+```sh
+npm run dev
 ```
 
+### Lint
 
-### Lint the files
-```bash
-yarn lint
-# or
+```sh
 npm run lint
 ```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
