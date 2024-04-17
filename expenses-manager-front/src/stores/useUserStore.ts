@@ -10,9 +10,6 @@ export const useUserStore = defineStore('user', {
     authenticated: false
   }),
   getters: {
-    // authenticated(state) {
-    //   return state.authenticated
-    // },
     authUser(state) {
       return state.user
     }
