@@ -60,7 +60,6 @@ const onSubmit = async () => {
 
 onMounted(async () => {
     let expense = await show(routeId.value);
-    console.log("EXPENSE => expense", expense);
     if(expense !== undefined){
         form.description = expense.description;
         form.date = expense.formatted_date;

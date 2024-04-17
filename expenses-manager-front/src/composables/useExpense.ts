@@ -68,7 +68,7 @@ const useExpense = () => {
 
   const update = async (id: any, params: ExpenseParams) => {
     try {
-      const response = await api.put(`/expenses/${id}`, params)
+      await api.put(`/expenses/${id}`, params)
       router.push('/expenses')
     } catch (e: any) {
       if (e.response?.status === 422) {
@@ -77,6 +77,15 @@ const useExpense = () => {
       if (e.response?.status === 403) {
         router.push('/unauthorized')
       }
+    }
+  }
+
+  const status = async () => {
+    try {
+      const response = await api.get('/status/expenses')
+      return response.data
+    } catch (e: any) {
+      console.log('Internal error', e)
     }
   }
 
@@ -107,7 +116,8 @@ const useExpense = () => {
     destroy,
     show,
     update,
-    expenses
+    expenses,
+    status
   }
 }
 
