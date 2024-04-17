@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
+import Guard from './middleware'
 import LayoutGuest from '../layouts/Guest.vue';
 import LayoutMain from '../layouts/Main.vue';
 
@@ -11,6 +11,7 @@ const routes = [
   {
     path: '/',
     component: LayoutMain,
+    beforeEnter: Guard.redirectIfNotAuthenticated,
     children: [{ path: '', name: 'home', component: Home }],
   },
   {
@@ -26,6 +27,7 @@ const routes = [
   {
     path: '/login',
     component: LayoutGuest,
+    beforeEnter: Guard.redirectIfAuthenticated,
     children: [{ path: '', name: 'login', component: Login }],
   },
   {

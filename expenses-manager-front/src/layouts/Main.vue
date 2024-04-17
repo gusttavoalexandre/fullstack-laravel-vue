@@ -35,6 +35,22 @@
           :key="item.title"
           v-bind="item"
         />
+        <q-item
+          clickable
+          tag="a"
+          @click="logout"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="logout" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Sair</q-item-label>
+          </q-item-section>
+        </q-item>
+
       </q-list>
     </q-drawer>
 
@@ -48,6 +64,7 @@
 import { ref } from 'vue';
 import MenuItem, { MenuItemProps } from 'components/MenuItem.vue';
 import LogoType from 'components/LogoType.vue';
+import useAuth from '../composables/useAuth'
 
 defineOptions({
   name: 'MainLayout'
@@ -56,10 +73,9 @@ defineOptions({
 
 const navigator: MenuItemProps[] = [
   { link: '/', title: 'Dashboard', icon: 'dashboard' },
-  { link: '/expenses', title: 'Despesas', icon: 'credit_card' },
-  { link: '/logout', title: 'Sair', icon: 'logout' },
+  { link: '/expenses', title: 'Despesas', icon: 'credit_card' }
 ]
-
+const { logout } = useAuth()
 const leftDrawerOpen = ref(false);
 
 function toggleLeftDrawer () {

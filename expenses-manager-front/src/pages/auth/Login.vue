@@ -6,9 +6,15 @@
       </q-card-section>
 
       <q-card-section>
+      <div class="q-pa-md">
+        <q-banner inline-actions class="text-white bg-red text-center" v-if="errors.general.length > 0">
+          {{ errors.general }}
+        </q-banner>
+      </div>
+
         <q-form @submit.prevent="onSubmit" class="q-gutter-md">
-          <q-input filled v-model="email" type="email" label="E-mail" />
-          <q-input filled v-model="password" type="password" label="Senha" />
+          <q-input filled v-model="form.email" type="email" label="E-mail" :error="errors.email.length > 0" :error-message="errors.email"/>
+          <q-input filled v-model="form.password" type="password" label="Senha" :error="errors.password.length > 0" :error-message="errors.password"/>
           <div>
             <q-btn label="Entrar" type="submit" color="primary" class="full-width" />
           </div>
@@ -27,16 +33,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import useAuth from '../../composables/useAuth'
 defineOptions({
   name: 'LoginPage'
 });
+const { login, errors } = useAuth()
+import { reactive } from 'vue'
 
-const email = ref('');
-const password = ref('');
+const form = reactive({
+  email: '',
+  password: ''
+})
 
-const onSubmit = () => {
-  console.log('Login attempt with:', email.value, password.value);
+const onSubmit = async () => {
+   await login(form)
 };
-
 </script>
