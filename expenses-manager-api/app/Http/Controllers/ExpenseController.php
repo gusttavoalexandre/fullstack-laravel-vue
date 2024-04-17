@@ -10,6 +10,7 @@ use App\Models\Expense;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
 
 class ExpenseController
@@ -24,7 +25,7 @@ class ExpenseController
     public function store(ExpenseStoreRequest $request): JsonResponse
     {
         $inputs = $request->validated();
-
+        $inputs['date'] = Carbon::createFromFormat('d/m/Y', $inputs['date']);
         $expense = auth()->user()->expenses()->create($inputs);
 
         $notification = $expense->notification()->create(['user_id' => auth()->id()]);

@@ -28,18 +28,17 @@ class ExpenseStoreRequest extends FormRequest
             'description' => 'required|string|max:255',
             'date' => [
                 'required',
-                'date',
                 function ($attribute, $value, $fail) {
                     try {
-                        $date = Carbon::parse($value);
+                        $date = Carbon::createFromFormat('d/m/Y', $value);
                     } catch (InvalidFormatException $e) {
-                        $fail('The '.$attribute.' invalid date format.');
+                        $fail('A '.$attribute.' deve seguir o formato d/m/Y.');
 
                         return;
                     }
 
                     if ($date->greaterThan(Carbon::today()->endOfDay())) {
-                        $fail('The '.$attribute.' cannot be in the future.');
+                        $fail('A '.$attribute.' não pode ser no futuro.');
                     }
                 },
             ],
