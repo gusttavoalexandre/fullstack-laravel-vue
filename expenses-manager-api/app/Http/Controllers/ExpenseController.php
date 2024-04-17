@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\GetExpensesStatus;
 use App\Http\Requests\Expense\ExpenseStoreRequest;
 use App\Http\Requests\Expense\ExpenseUpdateRequest;
 use App\Http\Resources\ExpenseResource;
@@ -60,5 +61,10 @@ class ExpenseController
         $expense->delete();
 
         return response()->json(['message' => 'Expense deleted successfully']);
+    }
+
+    public function status(): JsonResponse
+    {
+        return response()->json(GetExpensesStatus::execute(auth()->user()));
     }
 }

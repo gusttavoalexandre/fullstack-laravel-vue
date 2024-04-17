@@ -11,4 +11,9 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum')->name('me');
 });
 
-Route::resource('expenses', ExpenseController::class)->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::resource('expenses', ExpenseController::class)->middleware('auth:sanctum');
+    Route::get('/status/expenses', [ExpenseController::class, 'status'])->middleware('auth:sanctum')->name('expenses.status');
+});
+
+
